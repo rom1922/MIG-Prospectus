@@ -389,3 +389,60 @@ class HydroLSTM(nn.Module):
         y = self.head(hn[-1, :, :])
         return y, hn, _
 ```
+
+```{code-cell} ipython3
+import numpy as np
+
+R = 10  # samples
+C = 4   # features
+W = 3   # window
+
+X = np.arange(0, R*C).reshape(R, C)  # data
+y = np.arange(R).reshape(R, 1)  # target
+display(X, y)
+
+# Expected
+Xp = np.array([[[ 0,  1,  2,  3],
+                [ 4,  5,  6,  7],
+                [ 8,  9, 10, 11]],
+               
+               [[ 4,  5,  6,  7],
+                [ 8,  9, 10, 11],
+                [12, 13, 14, 15]],
+
+               [[ 8,  9, 10, 11],
+                [12, 13, 14, 15],
+                [16, 17, 18, 19]],
+
+               [[12, 13, 14, 15],
+                [16, 17, 18, 19],
+                [20, 21, 22, 23]],
+        
+               [[16, 17, 18, 19],
+                [20, 21, 22, 23],
+                [24, 25, 26, 27]],
+        
+               [[20, 21, 22, 23],
+                [24, 25, 26, 27],
+                [28, 29, 30, 31]],
+        
+               [[24, 25, 26, 27],
+                [28, 29, 30, 31],
+                [32, 33, 34, 35]]])
+yp = np.array([[3], [4], [5], [6], [7], [8], [9]])
+#display(Xp, yp)
+
+Xt = np.zeros_like(Xp)
+yt = np.zeros_like(yp)
+
+display(Xt, yp)
+
+np.all(Xt == Xp), np.all(yt == yp)
+```
+
+```{code-cell} ipython3
+for i in range(len(Xt)):
+    Xt[i] = X[i:i+W]
+    yt[i] = y[i+W]
+Xt
+```
