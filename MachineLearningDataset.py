@@ -17,6 +17,7 @@ class MLHydroDataset():
         ta = ta.loc[:, ta.columns.str.startswith("FR")].add_suffix("_TA")
         tp = tp.loc[:, tp.columns.str.startswith("FR")].add_suffix("_TP")
 
+        ta = ta.mean(axis = 1)
         X = pd.concat([ta, tp, cf["FR"].rename("CF")], axis=1)
         self.y = X[["CF"]]
         X = X.drop(columns=["CF"])
@@ -44,8 +45,11 @@ class MLHydroDataset():
         self.X['sin'] = np.sin(2 * pi * self.X.index.dayofyear / self.T)
 
         for region in self.regions:
-            self.X[f"{region}_TP"] = self.X[f'{region}_TP'].rolling(
-                window=self.correlation_df.at[region, 'Optimal Window']).sum().fillna(0)
+            if self.correlation_df.at[region, "Max Correlation"] < 0.5 :
+                self.X = self.X.drop(columns = [region])
+            else : 
+                self.X[f"{region}_TP"] = self.X[f'{region}_TP'].rolling(
+                    window=self.correlation_df.at[region, 'Optimal Window']).sum().fillna(0)
 
     def get_columns_to_normalize(self):
         all_columns = self.X.columns.tolist()
@@ -69,3 +73,5 @@ class MLHydroDataset():
             X2[columns_to_normalize]
         )
         return X_std
+
+
