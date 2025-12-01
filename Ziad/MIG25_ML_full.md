@@ -461,7 +461,6 @@ print(f"Weight[tp]: {w_tp:.6f}")
 print(f"Bias: {bias:.6f}")
 print()
 
-display_result_season(y_test, y_pred)
 ```
 
 +++ {"id": "wtpw1KZwhWoA"}
