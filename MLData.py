@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from numpy import pi
 
-if __name__ == '__main__':
 
+def prepare_training_data():
     data_directory = "data"
     correlation_file = "Resultats_Optimisation_Pluie.csv"
 
@@ -39,7 +39,8 @@ if __name__ == '__main__':
                "FRK1", "FRK2",
                "FRL0"]
 
-    correlation_df = pd.read_csv(correlation_file, sep=',', index_col=['Regions'])
+    correlation_df = pd.read_csv(
+        correlation_file, sep=',', index_col=['Regions'])
     scaler = StandardScaler()
 
     X['cos'] = np.cos(2 * pi * X.index.dayofyear / T)
@@ -64,3 +65,5 @@ if __name__ == '__main__':
     X[["cos", "sin"]].to_csv(f'{data_directory}/COS_SIN.csv')
 
 
+def prepare_prospective_data():
+    print("todo")
