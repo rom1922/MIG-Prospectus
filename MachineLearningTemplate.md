@@ -1,24 +1,38 @@
 ```python
-from MachineLearningDataset import MLHydroDataset
 from DisplayUtils import display_prediction, display_prediction_season
 from sklearn.model_selection import train_test_split
 import pandas as pd
 ```
 
 ```python
-dataset = MLHydroDataset(data_directory="data", correlation_file="correlation_features_hyperparameters.csv")
-dataset.X
+cf = pd.read_csv("data/CF_FR.csv", index_col="Date", parse_dates=["Date"])
+ta = pd.read_csv("data/TA_MEAN_NOTALL.csv", index_col="Date", parse_dates=["Date"])
+tp = pd.read_csv("data/TP_FR.csv", index_col="Date", parse_dates=["Date"])
+tp_w_opti = pd.read_csv("data/TP_ACC_NOTALL_W_OPTI.csv", index_col="Date", parse_dates=["Date"])
+cosSin = pd.read_csv("data/COS_SIN.csv", index_col="Date", parse_dates=["Date"])
+
+X = pd.concat([ta, tp, tp_w_opti, cosSin], axis=1)
+y = cf["FR"]
 ```
 
 ```python
-dataset.prepare_features()
-X = dataset.X
-y = dataset.y
+from sklearn.preprocessing import StandardScaler
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=365, shuffle=False)
 
-X_train_std = dataset.fit_transform(X_train)
-X_test_std = dataset.transform(X_test)
+# Normalisation
+scaler = StandardScaler().set_output(transform="pandas")
+columns_to_normalize = X.columns.values.tolist()
+columns_to_normalize.remove('sin')
+columns_to_normalize.remove('cos')
+
+```
+
+```python
+X_train_std = X_train.copy()
+X_train_std[columns_to_normalize] = scaler.fit_transform(X_train[columns_to_normalize])
+
+X_test_std[columns_to_normalize] = scaler.transform(X_test[columns_to_normalize])
 ```
 
 ```python
@@ -26,10 +40,10 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import r2_score, mean_squared_error
 
 gbr = GradientBoostingRegressor(
-    n_estimators=300,
-    learning_rate=0.05,
+    n_estimators=500,
+    learning_rate=0.1,
     max_depth=3,
-    random_state=40
+    random_state=42
 )
 
 gbr.fit(X_train, y_train)
