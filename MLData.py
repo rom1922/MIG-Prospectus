@@ -6,7 +6,7 @@ from numpy import pi
 if __name__ == '__main__':
 
     data_directory = "data"
-    correlation_file = "correlation_features_hyperparameters.csv"
+    correlation_file = "Resultats_Optimisation_Pluie.csv"
 
     cf = pd.read_csv(f"{data_directory}/CF_1d.csv", index_col="Date",
                      parse_dates=["Date"])
@@ -39,8 +39,7 @@ if __name__ == '__main__':
                "FRK1", "FRK2",
                "FRL0"]
 
-    correlation_df = pd.read_csv(
-        correlation_file, sep=',', index_col='Region')
+    correlation_df = pd.read_csv(correlation_file, sep=',', index_col=['Regions'])
     scaler = StandardScaler()
 
     X['cos'] = np.cos(2 * pi * X.index.dayofyear / T)
@@ -48,14 +47,14 @@ if __name__ == '__main__':
 
     for region in regions:
         X[f"{region}_TP_acc"] = X[f'{region}_TP'].rolling(
-            window=correlation_df.at[region, 'Optimal Window']).sum().fillna(0)
+            window=correlation_df.at[region, 'Optimal_Window']).sum().fillna(0)
 
     df_acc_TP_all_regions = X[[
         f"{region}_TP_acc" for region in regions]]
     df_acc_TP_not_all_regions = X[[
-        f"{region}_TP_acc" for region in regions if correlation_df.at[region, "Max Correlation"] >= 0.5]]
+        f"{region}_TP_acc" for region in regions if correlation_df.at[region, "Max_Correlation"] >= 0.5]]
     df_TA_mean_not_all_regions = ta[[
-        f"{region}_TA" for region in regions if correlation_df.at[region, "Max Correlation"] >= 0.5]].mean(axis=1).rename("TA_mean")
+        f"{region}_TA" for region in regions if correlation_df.at[region, "Max_Correlation"] >= 0.5]].mean(axis=1).rename("TA_mean")
     df_TA_mean_not_all_regions.to_csv(f"{data_directory}/TA_MEAN_NOTALL.csv")
     df_acc_TP_all_regions.to_csv(
         f'{data_directory}/TP_ACC_ALL_W_OPTI.csv')
@@ -63,3 +62,5 @@ if __name__ == '__main__':
         f'{data_directory}/TP_ACC_NOTALL_W_OPTI.csv')
     X[["TA_mean"]].to_csv(f'{data_directory}/TA_MEAN.csv')
     X[["cos", "sin"]].to_csv(f'{data_directory}/COS_SIN.csv')
+
+
