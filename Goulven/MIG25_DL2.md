@@ -52,8 +52,12 @@ sns.set_style('whitegrid')
 ### 1. Dataset & Dataloader
 
 ```{code-cell} ipython3
-:id: 8qbIpOVMg2DQ
-
+---
+id: 8qbIpOVMg2DQ
+editable: true
+slideshow:
+  slide_type: ''
+---
 from torch.utils.data import Dataset
 
 class HydroDataset(Dataset):
@@ -159,6 +163,9 @@ colab:
   base_uri: https://localhost:8080/
 id: DhRad-vRpmQd
 outputId: 522434e0-9112-4b10-9e70-e9dcc5fdf57f
+editable: true
+slideshow:
+  slide_type: ''
 ---
 from torch.nn import MSELoss
 from torch.optim import Adam
@@ -368,7 +375,7 @@ def create_sequences(X, seq_len):
 
 X = np.arange(40).reshape(10, 4)
 Xt = create_sequences(X, seq_len=3)
-X.shape, Xt.shape
+X
 ```
 
 ```{code-cell} ipython3
