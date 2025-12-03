@@ -187,7 +187,6 @@ test_ds = Subset(ds, test_indices)
 # Gestionnaire de batchs
 train_loader = DataLoader(train_ds, batch_size=CONFIG.BATCH_SIZE, shuffle=False)
 test_loader = DataLoader(test_ds, batch_size=CONFIG.BATCH_SIZE, shuffle=False)
-
 ```
 
 ```python editable=true slideshow={"slide_type": ""}
@@ -233,7 +232,6 @@ class LSTM(nn.Module):
         out = self.fc(out)
         return out
 
-
 ```
 
 ```python
@@ -243,7 +241,7 @@ class LSTM(nn.Module):
 #torch.manual_seed(42)
 torch.set_num_threads(11)
 
-input_dim = 2
+input_dim = len(X1.columns)
 model = LSTM(
     input_size=input_dim, 
     hidden_size=CONFIG.HIDDEN_SIZE, 
