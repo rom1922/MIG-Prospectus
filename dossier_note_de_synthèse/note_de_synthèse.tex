@@ -200,9 +200,17 @@ Sur le traitement des données lors de l'entrâinement, nous avons ainsi procéd
 \subsection{Approche Linéaire }
 
 L'approche linéaire consiste à modéliser le système à l'aide de fonctions linéaires : c'est une approche assez simple à implémenter et à concevoir à l'aide de la descente de gradient, mais ce n'est pas la plus performante.  
+En particulier, nous avons décidé d'implémenter la méthode Ridge, qu consiste à rajouter un terme de pénalité pour limiter la magnitude des coefficients et ainsi réduire l'overfitting. 
 
-En mettant en place les différentes stratégies, nous avons pu obtenir : 
-[RESULAT MAIS PAS GRAPHIQUE]
+En mettant ensuite en place les différentes stratégies,avec un lag de 15 jours précisément, sur les températures, nous avons pu obtenir : 
+\begin{itemize}
+    \item $R^2=0.58$
+    \item $nMae=0.14$ 			
+    \item $nRMSE= 0.18$
+    \item $R = 0.76$
+\end{itemize}
+
+Et, si ces résultats ne sont pas satisfaisants en soit, ils montrent qu'il est possible avec un bon traitement des données, d'améliorer significativement le modèle. 
 
 
 
@@ -233,9 +241,9 @@ Les résultats obtenus sont les suivants : \\
     \centering
     \begin{tabular}{|c|c|c|c|c|} % Ajout des | pour les lignes verticales
     \hline % Ligne horizontale supérieure
-    \textbf{Modèle} & \textbf{R}^2 & \textbf{MAE} & \textbf{MSE} & \textbf{RMSE} \\
+    \textbf{Modèle} & \textbf{R}^2 & \textbf{nMAE} & \textbf{nRMSE} & \textbf{R} \\
     \hline % Ligne horizontale séparant les en-têtes des données
-    Ridge Regression & & & & \\
+    Ridge Regression & 0.58&0.14 & 0.18& 0.76\\
     \hline
     Random Forest & & & & \\
     \hline
