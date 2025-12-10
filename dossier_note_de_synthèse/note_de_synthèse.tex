@@ -197,9 +197,14 @@ Afin d'optimiser nos modèles, nous essayons de minimiser plusieurs types d'erre
 
 \begin{itemize}
 
-    \item MAE : MSE : moyenne de l’erreur absolue, qui mesures la moyenne des résidus dans le data set  $$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
-    
-    \item MSE : Moyenne de l’erreur au carré, qui mesure la variance des résultats $$ \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
+    \item NMAE : Erreur Absolue Moyenne Normalisée
+$$ \text{NMAE} = \frac{\text{MAE}}{\text{Range}(y)} = \frac{\frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|}{\max(y) - \min(y)} $$
+
+    \item NRMSE : Racine Carrée de l'Erreur Quadratique Moyenne Normalisée
+    $$ \text{NRMSE} = \frac{\text{RMSE}}{\text{Range}(y)} = \frac{\sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}}{\max(y) - \min(y)} $$
+
+    \item R : Coefficient de Corrélation
+$$ \text{R} = \frac{\sum_{i=1}^{n} (y_i - \bar{y})(\hat{y}_i - \bar{\hat{y}})}{\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2 \sum_{i=1}^{n} (\hat{y}_i - \bar{\hat{y}})^2}} $$
 
     %\item RMSE : écart-type, RMSE$= \sqrt{MSE}$
 
