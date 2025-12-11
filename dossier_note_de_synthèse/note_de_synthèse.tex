@@ -124,9 +124,9 @@ TOOFA	Keanu\\[1.5cm]
 \\
 
 
-A l’heure où la question du climat et de l’énergie s'impose à nous, le lien entre les deux est de plus en plus étudié et exploré. Nous pouvons en effet désormais trouver des modèles énergétiques qui intègrent la variabilité climatique, ce qui n’était pas le cas il y a quelques années. Le mix énergétique français repose principalement sur l'électricité dont le nucléaire, qui représente $70 \%$ de la production électrique, en est le principal contributeur. Par ailleurs, l'énergie renouvelable prend une place de plus en plus prépondérante avec $24 \%$ de la production énergétique primaire nationale. Mais les variables climatiques ont une grande influence sur leur efficacité productive. En particulier, la variabilité climatique est particulièrement intéressante pour le domaine de l'hydroélectricité, qui représente près de $14 \%$ de la production française et qui dépend directement des précipitations par exemple.  \\
+A l’heure où la question du climat et de l’énergie s'impose à nous, le lien entre les deux est de plus en plus étudié et exploré. Nous pouvons en effet désormais trouver des modèles énergétiques qui intègrent la variabilité climatique, ce qui n’était pas le cas il y a quelques années. Le mix énergétique français repose principalement sur l'électricité dont le nucléaire, qui représente $70 \%$ de la production électrique, en est le principal contributeur. Par ailleurs, l'énergie renouvelable prend une place de plus en plus prépondérante avec $24 \%$ de la production énergétique primaire nationale. Mais les variables climatiques ont une grande influence sur leur efficacité productive. En particulier, la variabilité climatique est particulièrement intéressante pour le domaine de l'hydroélectricité, qui représente près de $14 \%$ de la production française et qui dépend directement des précipitations par exemple. Cette dépendance rend la production vulnérable aux aléas météorologiques, comme les sécheresses estivales qui réduisent les débits fluviaux. Dans un contexte de changement climatique, où la fréquence et l'intensité de ces événements extrêmes risquent d'augmenter, anticiper la disponibilité de la ressource hydraulique est crucial pour assurer la sécurité d'approvisionnement et l'équilibre du réseau électrique français.\\
 
-C'est notamment le sujet au centre de l'initiative Clim2Power, un projet Européen d'envergure, qui cherche à évaluer la sensibilité à la variabilité climatique des chemins possibles pour atteindre un système électrique neutre en carbone. A partir de données climatiques, des recherches sont menées pour imaginer quel pourrait être le mix énergétique, d'ici 2030-2050. Au cours de ce MIG, nous avons travaillé dans le cadre de ce projet, en répondant à la question suivante : \textbf{comment prendre en compte la variabilité climatique dans le système énergétique français} \\
+C'est notamment le sujet au centre de l'initiative Clim2Power, un projet Européen d'envergure, qui cherche à évaluer la sensibilité à la variabilité climatique des chemins possibles pour atteindre un système électrique neutre en carbone. A partir de données climatiques, des recherches sont menées pour imaginer quel pourrait être le mix énergétique, d'ici 2030-2050. Au cours de ce MIG, nous avons travaillé dans le cadre de ce projet, en répondant à la question suivante : \textbf{Comment prendre en compte la variabilité climatique dans le système énergétique français} \\
 
 Dans ce projet, nous nous sommes concentrés sur deux axes principaux :
 \begin{itemize}
@@ -138,7 +138,9 @@ Dans ce projet, nous nous sommes concentrés sur deux axes principaux :
 Par ailleurs, on peut noter qu'il existe trois principaux types de centrales hydrauliques: les centrales de lac ou de haute chute et les centrales d'éclusée ou de moyenne chute (hydroelectric dam), caractérisées par une implantation dans des régions montagneuses, un débit faible à moyen et une hauteur de chute moyenne à haute, et les centrales hydraulique au fil de l'eau (Run of River - RoR), caractérisées par une implantation le long de grands fleuves ou grandes rivières, avec un débit très fort et une faible hauteur de chute (moins de 30m). Certains barrages sont aussi dôtés de la technologie de STEP qui permet de réalimenter le bassin d'eau en hauteur à partir du bassin d'eau en sortie de la centrale par pompage. Cette technologie permet d'entretenir la production énergétique. Les centrales à barrage et par STEP sont des énergies de stock qui sont relativement pilotables et souvent utilisée pour les pics de demande énergétique. L'étude du MIG s'intéresse donc aux centrales au fil de l'eau, dont la production varient instantanément en fonction du débit d'eau turbinable dans les rivières. Elles sont donc les plus sensibles à l'influence des variations climatiques. 
 
 
-De manière plus concrète, nous avons donc modélisé,,en étudiant le cycle de l'eau, la puissance électrique que pourront fournir les barrages en France, en connaissant le volume de précipitations ainsi que la température. On réalise ces prédictions via le facteur de capacité (CF), défini ainsi : \\ $$ CF = \frac{P_{produite}}{P_{capacit\acute e \ install\acute ee}}$$
+De manière plus concrète, nous avons donc modélisé,,en étudiant le cycle de l'eau, la puissance électrique que pourront fournir les barrages en France, en connaissant le volume de précipitations ainsi que la température. On réalise ces prédictions via le facteur de charge (CF), défini ainsi : \\ $$ CF = \frac{P_{produite}}{P_{capacit\acute e \ install\acute ee}}$$
+
+Enfin, pour la partie prospective, nous nous appuyons sur un modèle d’optimisation de type bottom-up issu de la famille TIMES appliqué au système électrique français. Cet outil propose une représentation fine des infrastructures et des dynamiques de fonctionnement à l’échelle infra-journalière, afin d’éclairer les trajectoires d’évolution du système à long terme. Dans ce cadre, nous pouvons quantifier l’influence de la variabilité climatique sur la consommation d’électricité ainsi que sur les potentiels solaire, éolien et hydraulique, au sein de scénarios contrastés du futur mix électrique européen à l’horizon 2050. Ces scénarios sont construits selon différents degrés d’ambition en matière de décarbonation et intègrent des hypothèses différenciées concernant la demande future et la disponibilité des technologies.
 
 
 \section{Données et méthodologie }
@@ -163,7 +165,7 @@ Le scénario RCP4.5 correspond à une trajectoire intermédiaire de stabilisatio
 
 L'étape de \textbf{feature engineering} est cruciale pour améliorer les modèles. Elle consiste à manipuler les données bruts pour extraire des caractéristiques (features) afin de renforcer l'apprentissage du modèle. Pour notre problème, ces caractéristiques sont : 
 \begin{itemize}
-    \item la saisonnalité analysée sur les courbes de température et de Capacity Factors (CF), qui rend compte de données cycliques 
+    \item la saisonnalité analysée sur les courbes de température et de facts de charge (CF), qui rend compte de données cycliques 
     \item la fonte des neiges au printemps,  source d'eau supplémentaire dans le cycle de l'eau 
     \item l'accumulation des précipitations, en mètres par jour de pluie
 \end{itemize} 
@@ -183,11 +185,8 @@ L'objectif principal est que le modèle entraîné puisse fonctionner sur des do
 
 
 Pour garantir cette généralisation, on divise l'ensemble total des données en trois parties distinctes et chronologiques.
-\begin{itemize}
-    \item \textbf{Training Set} : c'est le plus grand ensemble de données (souvent 60\% à 80\% du total), utilisé pour ajuster les paramètres (les poids) du modèle.
-    \item \textbf{Validation Set} : il est utilisé pour optimiser les hyperparamètres du modèle et permet de trouver la configuration qui donne la meilleure performance avant de voir les données de test.
-    \item \textbf{Test Set} : c'est le plus petit ensemble. Il est utilisé une seule fois, à la toute fin du processus, pour obtenir une estimation non biaisée de la performance du modèle sur des données complètement nouvelles.
-\end{itemize}
+Le \textbf{\textit{training set}}, qui représente généralement 60 à 80\% des données, sert à ajuster les paramètres du modèle. Le \textbf{\textit{validation set}} est utilisé pour optimiser les hyperparamètres et déterminer la meilleure configuration avant d’examiner les données de test. Enfin, le \textbf{\textit{test set}}, plus réduit, n’est utilisé qu’une seule fois à la fin du processus afin d’obtenir une évaluation non biaisée des performances du modèle sur des données totalement nouvelles.\\
+
 Dans notre projet, le \textit{training set} et le \textit{validation set }correspondent aux données de 2015 à 2022, et le \textit{test set} correspond aux données de 2023.
 
 
@@ -217,8 +216,6 @@ $$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar
 A la vue de ces différentes erreurs, nous avons mis en place plusieurs stratégies pour les réduire. \\
 
 
-
-
 Sur le traitement des données lors de l'entrâinement, nous avons procédé à la normalisation des données, au calcul d'un biais, au moyennage d'une partie des données. Nous avons égalelement mis en place des fonctions rendant compte des saisons (ici les fonctions cosinus et sinus) et un lag (insertion d'un retard temporel dans les données). 
 
 Sur le traitement des prévision météorologiques, nous avons effectué des moyennes glissantes sur 10 ans, séparé et codé différents scénarios, et supprimé de la modélisation les régions avec une trop faible corrélation entre les données météorologiques et les CF. \\
@@ -230,13 +227,7 @@ Sur le traitement des prévision météorologiques, nous avons effectué des moy
 
 L'approche linéaire consiste à modéliser le système à l'aide de fonctions linéaires : c'est une approche assez simple à implémenter et à concevoir à l'aide de la descente de gradient, mais ce n'est pas la plus performante.  
 En particulier, nous avons décidé d'implémenter la méthode Ridge,
- dont l'objectif est de réduire la magnitude des coefficients et donc de rendre le modèle moins sensible aux fluctuations. Cela réduit la variance ie l'erreur quadratique, ce qui se traduit par une diminution des tendances d'overfitting.
-
-En mettant ensuite en place les différentes stratégies,avec un lag de 15 jours sur les températures, nous avons pu obtenir $R^2=0.58$ et $nMae=0.14$.		
-
-Et, si ces résultats ne sont pas satisfaisants en soit, ils montrent qu'il est possible avec un bon traitement des données, d'améliorer significativement le modèle, puisque les valeurs de départ pour le $R^2^$ ne dépassaient pas $0.1$. 
-
-
+ dont l'objectif est de réduire la magnitude des coefficients et donc de rendre le modèle moins sensible aux fluctuations. Cela réduit la variance ie l'erreur quadratique, ce qui se traduit par une diminution des tendances d'overfitting. 
 
 
 \subsection{Random Forest}
@@ -244,12 +235,9 @@ Et, si ces résultats ne sont pas satisfaisants en soit, ils montrent qu'il est 
 Après cette technique assez simple, nous nous sommes penchés sur des techniques plus complexes, basées sur les arbres de décisions. 
 La première, \textit{Random Forest}est une technique basée sur les arbres de récursion, qui améliore les arbres baggués pour construire des arbres décorrélés.
 
-En rajoutant les lags, décorrelant les régions et appliquons les méthodes sur les traitements de données habituels, cette technique nous a permis d'obtenir $R^2 = 0.66$, ce qui est mieux que le Ridge mais reste encore à améliorer. 
 
 \subsection{Gradient Boosting}
 Le \textit{Gradient Boosting }est également une technique utilisant les arbres et la récursion. Néanmoins, contrairement au \textit{Random Forest} qui construit ses arbres en parallèle et de manière indépendante, le \textit{Gradient Boosting} construit ses arbres de manière séquentielle et additive. Chacun de ces arbres peut être relativement petit et, en général, cela améliorer progressivement la précision du modèle. 
-
-De même, avec un traitement des données en amont et un entraînement ciblé, nous avons pu obtenir $R^2 = 0.66$
 
 
 \section{Deep Learning}
@@ -274,12 +262,7 @@ Les résultats obtenus sont les suivants : \\
     % Figure 2 (Dessous)
     \includegraphics[width=0.8\textwidth]{CF_val_2022_WE.png}
     \caption{Capacity Factors 2022}
-    \label{CF_2022}
-
-    % Figure 3
-    \includegraphics[width=0.5\textwidth]{bar_plot_erreur.jpeg}
-    \caption{Erreurs}
-    \label{Bar Plot}
+    \label{Autre_Figure_dessous}
     
 \end{figure}
 
