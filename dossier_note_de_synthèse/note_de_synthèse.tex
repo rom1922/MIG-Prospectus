@@ -124,9 +124,9 @@ TOOFA	Keanu\\[1.5cm]
 \\
 
 
-A l’heure où la question du climat et de l’énergie s'impose à nous, le lien entre les deux est de plus en plus étudié et exploré. Nous pouvons en effet désormais trouver des modèles énergétiques qui intègrent la variabilité climatique, ce qui n’était pas le cas il y a quelques années. En particulier, la variabilité climatique est particulièrement intéressante pour le domaine de l'hydroélectricité, qui représente près de $14 \%$ de la production française et qui dépend directement des précipitations par exemple. \\
-[COMPLETER]
-C'est notamment le sujet au centre de l'initiative Clim2Power, un projet Européen d'envergure, qui cherche à évaluer la sensibilité à la variabilité climatique des chemins possibles pour atteindre un système électrique neutre en carbone. A partir de données climatiques, des recherches sont menées pour imaginer quel pourrait être le mix énergétique, d'ici 2030-2050. Au cours de ce MIG, nous avons travaillé dans le cadre de ce projet, en répondant à la question suivante : \textbf{Comment prendre en compte la variabilité climatique dans le système énergétique français} \\
+A l’heure où la question du climat et de l’énergie s'impose à nous, le lien entre les deux est de plus en plus étudié et exploré. Nous pouvons en effet désormais trouver des modèles énergétiques qui intègrent la variabilité climatique, ce qui n’était pas le cas il y a quelques années. Le mix énergétique français repose principalement sur l'électricité dont le nucléaire, qui représente $70 \%$ de la production électrique, en est le principal contributeur. Par ailleurs, l'énergie renouvelable prend une place de plus en plus prépondérante avec $24 \%$ de la production énergétique primaire nationale. Mais les variables climatiques ont une grande influence sur leur efficacité productive. En particulier, la variabilité climatique est particulièrement intéressante pour le domaine de l'hydroélectricité, qui représente près de $14 \%$ de la production française et qui dépend directement des précipitations par exemple.  \\
+
+C'est notamment le sujet au centre de l'initiative Clim2Power, un projet Européen d'envergure, qui cherche à évaluer la sensibilité à la variabilité climatique des chemins possibles pour atteindre un système électrique neutre en carbone. A partir de données climatiques, des recherches sont menées pour imaginer quel pourrait être le mix énergétique, d'ici 2030-2050. Au cours de ce MIG, nous avons travaillé dans le cadre de ce projet, en répondant à la question suivante : \textbf{comment prendre en compte la variabilité climatique dans le système énergétique français} \\
 
 Dans ce projet, nous nous sommes concentrés sur deux axes principaux :
 \begin{itemize}
@@ -260,25 +260,22 @@ En particulier, nous avons utilisé le modèle LSTM (Long Short-Term Memory, soi
 
 Les résultats obtenus sont les suivants : \\
 
+
 \begin{figure}[!htp]
-    % Figure 1 (Gauche)
-    \begin{minipage}{0.48\textwidth} % Prend 48% de la largeur du texte
-        \centering
-        \includegraphics[width=\linewidth]{CF_2023.png} % L'image prend 100% de la minipage
-        \caption{Capacity Factors 2023}
-        \label{CF_2023_gauche}
-    \end{minipage}%
-    \hfill% (Espace horizontal pour séparer les deux minipages)
-    % Figure 2 (Droite)
-    \begin{minipage}{0.48\textwidth} % Prend 48% de la largeur du texte
-        \centering
-        \includegraphics[width=\linewidth]{CF_val_2022_WE.png} % L'image prend 100% de la minipage
-        \caption{Capacity Factors 2022}
-        \label{Autre_Figure}
-    \end{minipage}
+    \centering % Centre toutes les figures
     
-    \caption{Comparaison des Capacity Factors et d'une autre figure.} % Caption générale pour les deux figures
-    \label{Figures_Cote_a_Cote}
+    % Figure 1 (Dessus)
+    \includegraphics[width=0.8\textwidth]{CF_2023.png} 
+    \caption{Capacity Factors 2023}
+    \label{CF_2023_dessus}
+    
+    \vspace{0.5cm} % Ajoutez un peu d'espace vertical si nécessaire
+    
+    % Figure 2 (Dessous)
+    \includegraphics[width=0.8\textwidth]{CF_val_2022_WE.png}
+    \caption{Capacity Factors 2022}
+    \label{Autre_Figure_dessous}
+    
 \end{figure}
 
 Ces résultats sont bien meilleurs que les précédents.
@@ -307,6 +304,11 @@ Ces résultats sont bien meilleurs que les précédents.
 
 
 \section{Prospective}
+
+La prospective correspond aujourd'hui à une démarche de réflexion et d'anticipation autour des scénarios futurs pour notre société, afin d'éclairer nos décisions actuelles pour qu'elles intègrent les enjeux sur le long terme. \\
+La famille de modèles MARKAL-TIMES (MARKet ALlocation/The Integrated Markal Efom System) est l'outil principal du programme de recherche en modélisation prospective du CMA. Il se base sur l'optimisation d'un modèle technique et économique du système énergétique. \\ 
+En particulier, le CMA s'est concentré sur le développement d'un modèle pour la France, qui évolue en continu afin de prendre en compte les derniers changements des secteurs électrique, résidentiel, et des transports français notamment, ainsi que des mises à jour des bases de données technologiques. Ce modèle permet de voir les implications que différents scénarios énergétiques auraient pour la France.\\
+Pour notre part, nous sommes partis des CF prévus par notre modèle LSTM pour 2050. Nous les avons utilisés pour prévoir des mix énergétiques possibles pour la France en 2050 à l'aide du modèle TIMES-France. Nous avons décidé de mettre en place deux scénarios qui fonctionnent comme un encadrement du scénario tendanciel pour la France : un scénario très optimiste, et un scénario très pessimiste.  
 
 
 \section{Conclusion}
