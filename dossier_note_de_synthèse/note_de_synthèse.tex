@@ -260,25 +260,22 @@ En particulier, nous avons utilisé le modèle LSTM (Long Short-Term Memory, soi
 
 Les résultats obtenus sont les suivants : \\
 
+
 \begin{figure}[!htp]
-    % Figure 1 (Gauche)
-    \begin{minipage}{0.48\textwidth} % Prend 48% de la largeur du texte
-        \centering
-        \includegraphics[width=\linewidth]{CF_2023.png} % L'image prend 100% de la minipage
-        \caption{Capacity Factors 2023}
-        \label{CF_2023_gauche}
-    \end{minipage}%
-    \hfill% (Espace horizontal pour séparer les deux minipages)
-    % Figure 2 (Droite)
-    \begin{minipage}{0.48\textwidth} % Prend 48% de la largeur du texte
-        \centering
-        \includegraphics[width=\linewidth]{CF_val_2022_WE.png} % L'image prend 100% de la minipage
-        \caption{Capacity Factors 2022}
-        \label{Autre_Figure}
-    \end{minipage}
+    \centering % Centre toutes les figures
     
-    \caption{Comparaison des Capacity Factors et d'une autre figure.} % Caption générale pour les deux figures
-    \label{Figures_Cote_a_Cote}
+    % Figure 1 (Dessus)
+    \includegraphics[width=0.8\textwidth]{CF_2023.png} 
+    \caption{Capacity Factors 2023}
+    \label{CF_2023_dessus}
+    
+    \vspace{0.5cm} % Ajoutez un peu d'espace vertical si nécessaire
+    
+    % Figure 2 (Dessous)
+    \includegraphics[width=0.8\textwidth]{CF_val_2022_WE.png}
+    \caption{Capacity Factors 2022}
+    \label{Autre_Figure_dessous}
+    
 \end{figure}
 
 Ces résultats sont bien meilleurs que les précédents.
